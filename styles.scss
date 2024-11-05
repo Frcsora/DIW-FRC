@@ -1,0 +1,74 @@
+@import "variables";
+*{
+    margin:0;
+    font-size: 17px;
+}
+body{
+    max-width: $max-width;
+    max-height: $max-height;
+    margin-left: $margin-body;
+    margin-right: $margin-body;
+}
+header{
+    background-color: $gris-oscuro;
+    .margin-cabecera{
+        background-color: $amarillo1;
+        width: 100%;
+        height: 2vh;
+    }
+    .cabecera{
+        display: grid;
+        grid-template-columns: 1fr 25% 1fr;
+        grid-template-rows: repeat(4, auto);
+        margin-left: $margin-body;
+        .info-cabecera{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: flex-start;
+            h1{
+                color: #FFFFFF;
+                font-size: 2.5rem;
+            }
+            h2{
+                color:$amarillo1;
+                font-size: 1.5rem;
+            }
+            button{
+                background-color: $amarillo1;
+                width: 60%;
+            }
+            .nombre-institucion::before{
+                content: url(//logo.webp);
+                width:15px;
+                height: auto;
+            }
+            .nombre-institucion{
+                display: flex;
+                .linea{
+                    width: 0.2vw;
+                    height: 86%;
+                    background-color: $amarillo1;
+                    margin-right: 0.4vw;
+                }
+                .universidad{
+                    color: #FFFFFF;
+                    .universidad1{
+                        font-size: 0.5em;
+                    }
+                    .universidad2{
+                        font-size: 1.75em;
+                    }
+                }
+
+            }
+        }
+        .imagen1{
+            width:100%;
+            align-self: flex-end;
+            grid-column: 2 / span 2;
+            max-height: 300px;
+        }
+    }
+    
+}
