@@ -1,31 +1,46 @@
 @import "variables";
+@import "mixins";
+@import "functions";
 *{
     margin:0;
-    font-size: 17px;
+    font-size: 3vw;
+}
+a{
+    text-decoration: none;
+}
+button{
+    width: 60%;
+    background-color: $amarillo1;
+    font-size: 0.8em;
+    padding: 1%;
+}
+button:hover{
+    background-color: lighting($gris-oscuro);
 }
 body{
     max-width: $max-width;
-    max-height: $max-height;
-    margin-left: $margin-body;
-    margin-right: $margin-body;
+    height: auto;
 }
 header{
     background-color: $gris-oscuro;
     .margin-cabecera{
         background-color: $amarillo1;
         width: 100%;
-        height: 2vh;
+        height: 1vh;
     }
     .cabecera{
         display: grid;
         grid-template-columns: 1fr 25% 1fr;
         grid-template-rows: repeat(4, auto);
         margin-left: $margin-body;
+        
+        
         .info-cabecera{
             display: flex;
             flex-direction: column;
             justify-content: space-around;
             align-items: flex-start;
+            min-height: 55%;
             h1{
                 color: #FFFFFF;
                 font-size: 2.5rem;
@@ -34,34 +49,7 @@ header{
                 color:$amarillo1;
                 font-size: 1.5rem;
             }
-            button{
-                background-color: $amarillo1;
-                width: 60%;
-            }
-            .nombre-institucion::before{
-                content: url(//logo.webp);
-                width:15px;
-                height: auto;
-            }
-            .nombre-institucion{
-                display: flex;
-                .linea{
-                    width: 0.2vw;
-                    height: 86%;
-                    background-color: $amarillo1;
-                    margin-right: 0.4vw;
-                }
-                .universidad{
-                    color: #FFFFFF;
-                    .universidad1{
-                        font-size: 0.5em;
-                    }
-                    .universidad2{
-                        font-size: 1.75em;
-                    }
-                }
-
-            }
+            @include institucion(100%);
         }
         .imagen1{
             width:100%;
@@ -69,6 +57,183 @@ header{
             grid-column: 2 / span 2;
             max-height: 300px;
         }
+    }   
+}
+main{
+    .mensaje{
+        margin: $margin-body;
+        height: auto;
+        
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        .titulo-mensaje{
+            font-size: 1.5em;
+            margin-bottom: 2%;
+        }
+        .cuerpo-mensaje{
+            line-height: 140%;
+            margin-bottom:3%;
+        }
+        .boton-rep{
+            font-size: 0.8em;
+            width: 30%;
+            padding:1%;
+            background-color: $amarillo1;
+        }
+        .boton-rep:hover{
+            background-color: lighting($gris-oscuro);
+        }
     }
-    
+    .grid-table{
+        display: flex;
+        flex-direction: column;
+        .grid-header{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 5.5vmin;
+            color: #FFFFFF;
+            background-color: $gris-oscuro;
+        }
+        .grid-main{
+            min-height: 40vmin;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            .grid-1, .grid-2, .grid-3{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                text-align: center;
+                padding: 3%;
+                svg{
+                    width: 40%;
+                }
+                h1{
+                    font-size: 2em;
+                }
+                
+            }
+            .grid-1{
+                background-color: $amarillo2;
+                grid-column: 1 /span 1;
+                
+            }
+            .grid-2{
+                grid-column: 2/span 1;
+            }
+            .grid-3{
+                grid-column: 3/ span 1;
+                background-color: $amarillo3;
+            }
+        }
+        .table-footer{
+            width: 100%;
+            height: 1vmin;
+            background-color: $amarillo1;
+        }
+    }
+    .news-grid{
+        margin:5%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        .news-text{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+            gap: 5%;
+            h2, p{
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            button{
+                width: 90%;
+                padding: 3%;
+                margin-bottom: 5%;
+            }
+        }
+        .news-image{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
+footer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:auto auto;
+    background-color: $gris-oscuro;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    color:white;
+    gap:15%;
+    .footer-uni{
+        grid-column: 1 / span 1;
+        grid-row: 1/ span 1;
+        @include institucion(80%);
+
+    }
+    .footer-address{
+        grid-column: 2/ span 1;
+        grid-row: 1/ span 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        p{
+            font-size: 0.6em;
+        }
+    }
+    .footer-legal{
+        grid-column: 1 / span 2;
+        grid-row: 2 /span 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        padding-bottom: 2%;
+        p{
+            font-size: 0.7em;
+        }
+        .subscription{
+            color: $gris;
+        }
+    }
+}
+@media screen and (max-width: 450px){
+
+    main{
+        .grid-table{
+            .grid-main{
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                .grid-1, .grid-2, .grid-3{
+                    grid-column: 1 /span 1;
+                }
+                .grid-1{
+                    grid-row: 1 / span 1;
+                }
+                .grid-2{
+                    grid-row: 2 / span 1;
+                }
+                .grid-3{
+                    grid-row: 3 / span 1;
+                }
+            }
+            
+        }
+    }
+}
+@media screen and (min-width:600px){
+    *{
+        font-size: 18px;
+    }
 }

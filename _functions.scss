@@ -1,0 +1,3 @@
+@function lighting($color, $amount: 20%){
+    @return lighten($color, $amount);
+}
